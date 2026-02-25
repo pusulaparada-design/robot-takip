@@ -15,6 +15,7 @@ const sheets = google.sheets({ version: "v4", auth });
 
 function parseMessage(text) {
   try {
+    text = text.replace(/₺/g, '').replace(/\u20BA/g, '');
     const idIsimMatch = text.match(/^(\d{5,})\s+(.+?)\s+(?:Varl|Varlık)/i);
     if (!idIsimMatch) return null;
     const id = idIsimMatch[1];
